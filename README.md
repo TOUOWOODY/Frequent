@@ -1,38 +1,8 @@
-# Frequent
- Frequently used code
- 
- public class Object_Pooling : MonoBehaviour
-{
-    [SerializeField]
-    private GameObject Arrow;
+private Vector3 target;
 
-    [SerializeField]
-    private GameObject Zombie;
-
-    public GameObject OP_Parents;
-
-    public Queue<GameObject> Arrow_OP = null;
-    public Queue<GameObject> Zombie_OP = null;
-
-    public void Initialized()
+    public void Frequent()
     {
-        Arrow_OP = new Queue<GameObject>();
-        Zombie_OP = new Queue<GameObject>();
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, 10f);
 
-        for(int i = 0; i < 50; i++)
-        {
-            GameObject arrow = Instantiate(Arrow, new Vector3(0, 0, 0), Quaternion.identity);
-            Arrow_OP.Enqueue(arrow);
-            arrow.transform.SetParent(OP_Parents.transform, false);
-            arrow.SetActive(false);
-        }
-
-        for (int i = 0; i < 100; i++)
-        {
-            GameObject zombie = Instantiate(Zombie, new Vector3(0, 0, 0), Quaternion.identity);
-            Zombie_OP.Enqueue(zombie);
-            zombie.transform.SetParent(OP_Parents.transform, false);
-            zombie.SetActive(false);
-        }
+        // 10의 속도로 타켓 방향 이동
     }
-}
